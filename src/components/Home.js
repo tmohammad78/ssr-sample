@@ -3,7 +3,7 @@ function Home() {
     return (
         <div>
             Home page
-            <button onClick={() => alert("See Alert")}>click to see alert</button>
+            <button onClick={() => console.log("Hi there!")}>press me</button>
         </div>
     )
 }
