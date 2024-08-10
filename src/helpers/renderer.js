@@ -1,10 +1,14 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
-import Home from "../components/Home";
-export default (req,store) => {
+import { StaticRouter } from "react-router-dom";
+import Routes from "../client/Routes";
+export default (req) => {
+    // we should add location because staticRouter can not check the url for location
     const content = renderToString(
-        <Home />
-    )
+       <StaticRouter location={req.url} context={{}}>
+            <Routes />
+       </StaticRouter>
+    );
 
     return `
     <html>
