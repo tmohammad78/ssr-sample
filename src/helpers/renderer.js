@@ -2,12 +2,15 @@ import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import Routes from "../client/Routes";
-export default (req) => {
-    // we should add location because staticRouter can not check the url for location
+import { Provider } from "react-redux"
+
+export default (req,store) => {
     const content = renderToString(
-       <StaticRouter location={req.url} context={{}}>
-            <Routes />
-       </StaticRouter>
+        <Provider store={store}>
+            <StaticRouter location={req.path} context={{}}>
+                 <Routes />
+            </StaticRouter>
+        </Provider>
     );
 
     return `
