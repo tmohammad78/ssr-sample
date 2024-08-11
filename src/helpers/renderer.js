@@ -5,7 +5,7 @@ import Routes from "../client/Routes";
 export default (req) => {
     // we should add location because staticRouter can not check the url for location
     const content = renderToString(
-       <StaticRouter location={req.url} context={{}}>
+       <StaticRouter location={req.path} context={{}}>
             <Routes />
        </StaticRouter>
     );
